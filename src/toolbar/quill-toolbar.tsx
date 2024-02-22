@@ -35,6 +35,7 @@ interface QuillToolbarProps {
   custom?: ToolbarCustom;
   container?: false | 'avoiding-view' | React.ComponentType;
   showSelectionBar?: boolean;
+  scrollEnabled?: boolean;
 }
 
 interface ToolbarState {
@@ -134,7 +135,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
   };
 
   renderToolbar = () => {
-    const { styles, custom, showSelectionBar } = this.props;
+    const { styles, custom, showSelectionBar, scrollEnabled } = this.props;
     const { toolSets, theme, formats } = this.state;
     const defaultStyles = makeStyles(theme);
 
@@ -155,6 +156,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
             horizontal={true}
             bounces={false}
             showsHorizontalScrollIndicator={false}
+            scrollEnabled={scrollEnabled}
           >
             {toolSets.map((object, index) => {
               return (
