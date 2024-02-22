@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import {
-  View,
-  KeyboardAvoidingView,
-  ScrollView,
   Dimensions,
-  StyleSheet,
+  KeyboardAvoidingView,
   Platform,
+  ScrollView,
+  StyleSheet,
+  View,
 } from 'react-native';
-import { fullOptions, basicOptions } from '../constants/toolbar-options';
+import type { FormatChangeData } from '../constants/editor-event';
+import { darkTheme, lightTheme } from '../constants/themes';
+import { basicOptions, fullOptions } from '../constants/toolbar-options';
+import type QuillEditor from '../editor/quill-editor';
 import type {
-  ToolbarTheme,
+  ColorListData,
+  CustomStyles,
   TextListData,
   ToggleData,
-  ColorListData,
   ToolbarCustom,
-  CustomStyles,
+  ToolbarTheme,
 } from '../types';
-import { lightTheme, darkTheme } from '../constants/themes';
 import { getToolbarData } from '../utils/toolbar-utils';
-import type QuillEditor from '../editor/quill-editor';
-import { ToolbarProvider } from './components/toolbar-context';
 import { SelectionBar } from './components/selection-bar';
 import { ToolSet } from './components/tool-set';
+import { ToolbarProvider } from './components/toolbar-context';
 import { ToolbarSeparator } from './components/toolbar-separator';
-import type { FormatChangeData } from '../constants/editor-event';
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -34,6 +34,7 @@ interface QuillToolbarProps {
   theme: ToolbarTheme | 'dark' | 'light';
   custom?: ToolbarCustom;
   container?: false | 'avoiding-view' | React.ComponentType;
+  showSelectionBar?: boolean;
 }
 
 interface ToolbarState {
@@ -92,7 +93,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
   private prepareIconset = () => {
     const { options, custom } = this.props;
     let toolbarOptions: Array<Array<string | object> | string | object> = [];
-    if (options === 'full' || options === []) {
+    if (options === 'full' || options.length === 0) {
       toolbarOptions = fullOptions;
     } else if (options === 'basic') {
       toolbarOptions = basicOptions;
@@ -133,7 +134,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
   };
 
   renderToolbar = () => {
-    const { styles, custom } = this.props;
+    const { styles, custom, showSelectionBar } = this.props;
     const { toolSets, theme, formats } = this.state;
     const defaultStyles = makeStyles(theme);
 
@@ -148,7 +149,7 @@ export class QuillToolbar extends Component<QuillToolbarProps, ToolbarState> {
         custom={custom}
         styles={styles}
       >
-        <SelectionBar />
+        {showSelectionBar && <SelectionBar />}
         <View style={toolbarStyle}>
           <ScrollView
             horizontal={true}
