@@ -129,7 +129,7 @@ export const quill_snow_css = (cdn: boolean) =>
      counter-increment: list-1;
    }
    .ql-editor ol li.ql-indent-1:before {
-     content: counter(list-1, lower-alpha) '. ';
+     content: counter(list-1, decimal) '. ';
    }
    .ql-editor ol li.ql-indent-1 {
      counter-reset: list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;
@@ -138,7 +138,7 @@ export const quill_snow_css = (cdn: boolean) =>
      counter-increment: list-2;
    }
    .ql-editor ol li.ql-indent-2:before {
-     content: counter(list-2, lower-roman) '. ';
+     content: counter(list-2, decimal) '. ';
    }
    .ql-editor ol li.ql-indent-2 {
      counter-reset: list-3 list-4 list-5 list-6 list-7 list-8 list-9;
@@ -156,7 +156,7 @@ export const quill_snow_css = (cdn: boolean) =>
      counter-increment: list-4;
    }
    .ql-editor ol li.ql-indent-4:before {
-     content: counter(list-4, lower-alpha) '. ';
+     content: counter(list-4, decimal) '. ';
    }
    .ql-editor ol li.ql-indent-4 {
      counter-reset: list-5 list-6 list-7 list-8 list-9;
@@ -165,7 +165,7 @@ export const quill_snow_css = (cdn: boolean) =>
      counter-increment: list-5;
    }
    .ql-editor ol li.ql-indent-5:before {
-     content: counter(list-5, lower-roman) '. ';
+     content: counter(list-5, decimal) '. ';
    }
    .ql-editor ol li.ql-indent-5 {
      counter-reset: list-6 list-7 list-8 list-9;
@@ -183,7 +183,7 @@ export const quill_snow_css = (cdn: boolean) =>
      counter-increment: list-7;
    }
    .ql-editor ol li.ql-indent-7:before {
-     content: counter(list-7, lower-alpha) '. ';
+     content: counter(list-7, decimal) '. ';
    }
    .ql-editor ol li.ql-indent-7 {
      counter-reset: list-8 list-9;
@@ -192,7 +192,7 @@ export const quill_snow_css = (cdn: boolean) =>
      counter-increment: list-8;
    }
    .ql-editor ol li.ql-indent-8:before {
-     content: counter(list-8, lower-roman) '. ';
+     content: counter(list-8, decimal) '. ';
    }
    .ql-editor ol li.ql-indent-8 {
      counter-reset: list-9;
