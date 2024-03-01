@@ -74,23 +74,24 @@ export const quill_snow_css = (cdn: boolean) =>
      list-style-type: none;
    }
    
-   .ql-editor ol li.ql-indent-1:before {
-   .ql-editor ol li.ql-indent-4:before {
+   .ql-editor ol li.ql-indent-1:before,
+   .ql-editor ol li.ql-indent-4:before,
    .ql-editor ol li.ql-indent-7:before {
         content: '\\2022'; /* disc */
     }
 
-    .ql-editor ol li.ql-indent-2:before {
-    .ql-editor ol li.ql-indent-5:before {
+    .ql-editor ol li.ql-indent-2:before,
+    .ql-editor ol li.ql-indent-5:before,
     .ql-editor ol li.ql-indent-8:before {
           content: '\\25E6'; /* circle */
     }
 
-    .ql-editor ol li.ql-indent-3:before {
-    .ql-editor ol li.ql-indent-6:before {
+    .ql-editor ol li.ql-indent-3:before,
+    .ql-editor ol li.ql-indent-6:before,
     .ql-editor ol li.ql-indent-9:before {
           content: '\\25A0'; /* square */
     }
+
    .ql-editor ul[data-checked=true],
    .ql-editor ul[data-checked=false] {
      pointer-events: none;
