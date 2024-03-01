@@ -4,18 +4,22 @@ export const create_quill = ({
   clipboard,
   keyboard,
   placeholder,
+  formats,
   theme,
   customFonts = [],
   customJS,
+  readonly = false,
 }: {
   id: string;
   toolbar: 'false' | string;
   clipboard: string;
   keyboard: string;
   placeholder: string;
+  formats?: string[];
   theme: 'snow' | 'bubble';
   customFonts: Array<string>;
   customJS: string;
+  readonly: boolean;
 }) => {
   let font = '';
   if (customFonts.length > 0) {
@@ -42,12 +46,17 @@ export const create_quill = ({
   <script>
   
   ${font}
-  ${customJS}
+  
   var quill = new Quill('#${id}', {
     modules: { ${modules} },
-    placeholder: '${placeholder}',
-    theme: '${theme}'
+    placeholder: "${placeholder}",
+    theme: '${theme}',
+    formats: ${!formats ? undefined : JSON.stringify(formats)}
+    readOnly: ${readonly},
   });
+
+  ${customJS}
+
   </script>
   `;
 };

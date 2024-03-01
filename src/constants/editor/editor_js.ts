@@ -3,7 +3,7 @@ export const editor_js = `
 (function (doc) {
 
   var getAttributes = function (node) {
-    const attrArray = node?.attributes ? [...node.attributes] : [];
+    const attrArray = node && node.attributes ? [...node.attributes] : [];
     return attrArray.reduce((_attr, node) => ({ ..._attr, [node.nodeName]: node.nodeValue}), {});
   }
 
@@ -170,7 +170,7 @@ export const editor_js = `
 
   const getLeaf = function (key, index) {
     const [leaf, offset] = quill.getLeaf(index);
-    const getLeafData = leaf ? {
+    const getLeafData = leaf && leaf.parent && leaf.parent.domNode ? {
       offset,
       text: leaf.text,
       length: leaf.text.length,
@@ -243,6 +243,9 @@ export const editor_js = `
         getSelection(msg.key, msg.focus);
         break;
       case 'getFormat': 
+        if (msg === undefined || msg.index === undefined || msg.length === undefined) {
+            break;
+          }
         getFormat(msg.key, msg?.index, msg?.length);
         break;
       case 'getLeaf':

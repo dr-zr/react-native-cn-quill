@@ -8,7 +8,9 @@ import {
   type ViewStyle,
 } from 'react-native';
 import {
-  WebView, type WebViewMessageEvent, type WebViewProps,
+  WebView,
+  type WebViewMessageEvent,
+  type WebViewProps,
 } from 'react-native-webview';
 import type {
   DimensionsChangeData,
@@ -57,6 +59,7 @@ export interface EditorProps {
   onBlur?: () => void;
   onFocus?: () => void;
   customJS?: string;
+  readonly?: boolean;
 }
 
 export default class QuillEditor extends React.Component<
@@ -133,6 +136,7 @@ export default class QuillEditor extends React.Component<
       customStyles = [],
       defaultFontFamily = undefined,
       customJS = '',
+      readonly = false,
     } = this.props;
 
     return createHtml({
@@ -143,6 +147,7 @@ export default class QuillEditor extends React.Component<
       toolbar: JSON.stringify(quill.modules?.toolbar),
       clipboard: quill.modules?.clipboard,
       keyboard: quill.modules?.keyboard,
+      formats: quill.formats,
       libraries: import3rdParties,
       editorId: quill.id ? quill.id : 'editor-container',
       defaultFontFamily,
@@ -153,6 +158,7 @@ export default class QuillEditor extends React.Component<
       placeholderColor: theme.placeholder,
       customStyles,
       customJS,
+      readonly,
     });
   };
 

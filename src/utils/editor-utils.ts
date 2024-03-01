@@ -4,8 +4,8 @@ import {
   editor_css,
   editor_js,
   quill_bubble_css,
-  quill_snow_css,
   quill_js,
+  quill_snow_css,
 } from '../constants/editor';
 
 export const getFontName = (font: string) => {
@@ -18,6 +18,7 @@ interface CreateHtmlArgs {
   toolbar: string;
   clipboard?: string;
   keyboard?: string;
+  formats?: string[];
   libraries: 'local' | 'cdn';
   theme: 'snow' | 'bubble';
   editorId: string;
@@ -30,6 +31,7 @@ interface CreateHtmlArgs {
   fonts: Array<CustomFont>;
   defaultFontFamily?: string;
   customJS?: string;
+  readonly?: boolean;
 }
 
 const Inital_Args = {
@@ -49,6 +51,7 @@ const Inital_Args = {
   customStyles: [],
   fonts: [],
   customJS: '',
+  readonly: false,
 } as CreateHtmlArgs;
 
 export const createHtml = (args: CreateHtmlArgs = Inital_Args) => {
@@ -98,9 +101,11 @@ export const createHtml = (args: CreateHtmlArgs = Inital_Args) => {
     clipboard: args.clipboard ? args.clipboard : '',
     keyboard: args.keyboard ? args.keyboard : '',
     placeholder: args.placeholder,
+    formats: args.formats,
     theme: args.theme,
     customFonts: args.fonts.map((f) => getFontName(f.name)),
     customJS: args.customJS ? args.customJS : '',
+    readonly: args.readonly ? args.readonly : false,
   })}
   ${editor_js}
   </body>
