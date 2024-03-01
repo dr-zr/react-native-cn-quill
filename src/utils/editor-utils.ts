@@ -31,10 +31,10 @@ interface CreateHtmlArgs {
   fonts: Array<CustomFont>;
   defaultFontFamily?: string;
   customJS?: string;
-  readonly?: boolean;
+  readOnly?: boolean;
 }
 
-const Inital_Args = {
+const Initial_Args = {
   initialHtml: '',
   placeholder: 'write here',
   toolbar: 'false',
@@ -51,10 +51,10 @@ const Inital_Args = {
   customStyles: [],
   fonts: [],
   customJS: '',
-  readonly: false,
+  readOnly: false,
 } as CreateHtmlArgs;
 
-export const createHtml = (args: CreateHtmlArgs = Inital_Args) => {
+export const createHtml = (args: CreateHtmlArgs = Initial_Args) => {
   return `
   <!DOCTYPE html>
   <html>
@@ -105,7 +105,7 @@ export const createHtml = (args: CreateHtmlArgs = Inital_Args) => {
     theme: args.theme,
     customFonts: args.fonts.map((f) => getFontName(f.name)),
     customJS: args.customJS ? args.customJS : '',
-    readonly: args.readonly ? args.readonly : false,
+    readOnly: args.readOnly ? args.readOnly : false,
   })}
   ${editor_js}
   </body>
