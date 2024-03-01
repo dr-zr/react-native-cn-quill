@@ -46,16 +46,17 @@ export const create_quill = ({
   <script>
   
   ${font}
+  ${customJS}
   
   var quill = new Quill('#${id}', {
     modules: { ${modules} },
-    placeholder: "${placeholder}",
+    placeholder: '${JSON.stringify(placeholder).replace(/"/g, '\\"')}',
     theme: '${theme}',
     formats: ${!formats ? undefined : JSON.stringify(formats)}
     readOnly: ${readOnly},
   });
 
-  ${customJS}
+  
 
   </script>
   `;

@@ -153,7 +153,7 @@ export const editor_js = `
     var getSelectionJson = JSON.stringify({
       type: 'get-selection',
       key: key,
-      data: getSelectionData 
+      data: getSelectionData
     });
     sendMessage(getSelectionJson);
   }
@@ -175,7 +175,7 @@ export const editor_js = `
       text: leaf.text,
       length: leaf.text.length,
       index: quill.getIndex(leaf),
-      attributes: getAttributes(leaf?.parent?.domNode)
+      attributes: getAttributes(leaf.parent.domNode)
     } : null
     const getLeafJson = JSON.stringify({
       type: 'get-leaf',
