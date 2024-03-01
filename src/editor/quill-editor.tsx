@@ -147,7 +147,6 @@ export default class QuillEditor extends React.Component<
       toolbar: JSON.stringify(quill.modules?.toolbar),
       clipboard: quill.modules?.clipboard,
       keyboard: quill.modules?.keyboard,
-      formats: quill.formats,
       libraries: import3rdParties,
       editorId: quill.id ? quill.id : 'editor-container',
       defaultFontFamily,
@@ -197,7 +196,9 @@ export default class QuillEditor extends React.Component<
   };
 
   private onMessage = (event: WebViewMessageEvent) => {
+    console.log('👉  event:', event);
     const message = this.toMessage(event.nativeEvent.data);
+    console.log('👉  message:', message);
     const { autoSize } = this.props;
     const response = message.key
       ? this._promises.find((x) => x.key === message.key)
@@ -239,6 +240,8 @@ export default class QuillEditor extends React.Component<
         }
         break;
       default:
+        console.log("Sending message to webview's onMessage", { message });
+
         // Allow catching messages using the passed webview props
         if (this.props.webview?.onMessage) {
           this.props.webview?.onMessage(event);
