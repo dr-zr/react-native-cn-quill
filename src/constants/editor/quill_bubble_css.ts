@@ -73,23 +73,25 @@ export const quill_bubble_css = (cdn: boolean) =>
    .ql-editor ul > li {
      list-style-type: none;
    }
-   .ql-editor ul.list-1 {
-  .ql-editor ul.list-4 {
-  .ql-editor ul.list-7 {
-    list-style-type: disc;
-  }
+   
+   .ql-editor ol li.ql-indent-1:before {
+   .ql-editor ol li.ql-indent-4:before {
+   .ql-editor ol li.ql-indent-7:before {
+        content: '\\2022'; /* disc */
+    }
 
-  .ql-editor ul.list-2 {
-  .ql-editor ul.list-5 {
-  .ql-editor ul.list-8 {
-    list-style-type: circle;
-  }
+    .ql-editor ol li.ql-indent-2:before {
+    .ql-editor ol li.ql-indent-5:before {
+    .ql-editor ol li.ql-indent-8:before {
+          content: '\\25E6'; /* circle */
+    }
 
-  .ql-editor ul.list-3 {
-  .ql-editor ul.list-6 {
-  .ql-editor ul.list-9 {
-    list-style-type: square;
-  }
+    .ql-editor ol li.ql-indent-3:before {
+    .ql-editor ol li.ql-indent-6:before {
+    .ql-editor ol li.ql-indent-9:before {
+          content: '\\25A0'; /* square */
+    }
+
    .ql-editor ul[data-checked=true],
    .ql-editor ul[data-checked=false] {
      pointer-events: none;
