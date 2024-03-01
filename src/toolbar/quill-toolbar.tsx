@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, type PropsWithChildren } from 'react';
 import {
   Dimensions,
   KeyboardAvoidingView,
@@ -33,7 +33,7 @@ interface QuillToolbarProps {
   editor: React.RefObject<QuillEditor>;
   theme: ToolbarTheme | 'dark' | 'light';
   custom?: ToolbarCustom;
-  container?: false | 'avoiding-view' | React.ComponentType;
+  container?: false | 'avoiding-view' | React.ComponentType<PropsWithChildren>;
   showSelectionBar?: boolean;
   scrollEnabled?: boolean;
 }

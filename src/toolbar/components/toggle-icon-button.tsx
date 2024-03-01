@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  TouchableWithoutFeedback,
-  View,
   Image,
   StyleSheet,
-  ImageSourcePropType,
+  TouchableWithoutFeedback,
+  View,
+  type ImageSourcePropType,
 } from 'react-native';
 import type { ToolbarTheme } from '../../types';
 import { useToolbar } from './toolbar-context';

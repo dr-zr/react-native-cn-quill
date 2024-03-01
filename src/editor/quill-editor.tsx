@@ -1,18 +1,25 @@
 import * as React from 'react';
 import {
-  WebView,
-  WebViewMessageEvent,
-  WebViewProps,
-} from 'react-native-webview';
-import {
-  View,
-  Text,
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
   Platform,
+  StyleSheet,
+  Text,
+  View,
+  type StyleProp,
+  type ViewStyle,
 } from 'react-native';
-import { createHtml } from '../utils/editor-utils';
+import {
+  WebView, type WebViewMessageEvent, type WebViewProps,
+} from 'react-native-webview';
+import type {
+  DimensionsChangeData,
+  EditorChangeData,
+  EditorEventHandler,
+  EditorEventType,
+  HtmlChangeData,
+  Range,
+  SelectionChangeData,
+  TextChangeData,
+} from '../constants/editor-event';
 import type {
   CustomFont,
   EditorMessage,
@@ -20,16 +27,7 @@ import type {
   GetLeafResponse,
   QuillConfig,
 } from '../types';
-import type {
-  EditorEventHandler,
-  EditorEventType,
-  SelectionChangeData,
-  EditorChangeData,
-  TextChangeData,
-  HtmlChangeData,
-  DimensionsChangeData,
-  Range,
-} from '../constants/editor-event';
+import { createHtml } from '../utils/editor-utils';
 import { Loading } from './loading';
 
 export interface EditorState {

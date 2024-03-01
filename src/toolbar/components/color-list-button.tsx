@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  View,
   Image,
   StyleSheet,
   TouchableOpacity,
-  ImageSourcePropType,
+  View,
+  type ImageSourcePropType,
 } from 'react-native';
 import type { ToggleData, ToolbarTheme } from '../../types';
 import { useToolbar } from './toolbar-context';

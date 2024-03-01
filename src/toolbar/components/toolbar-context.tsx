@@ -1,5 +1,5 @@
-import React, { Component, useContext } from 'react';
-import { StyleSheet, Animated, Easing } from 'react-native';
+import React, { Component, useContext, type PropsWithChildren } from 'react';
+import { Animated, Easing, StyleSheet } from 'react-native';
 import { lightTheme } from '../../constants/themes';
 import type {
   CustomStyles,
@@ -52,7 +52,7 @@ interface ProviderState {
   name: string;
 }
 
-export class ToolbarProvider extends Component<ProviderProps, ProviderState> {
+export class ToolbarProvider extends Component<PropsWithChildren<ProviderProps>, ProviderState> {
   animatedValue: Animated.Value;
   constructor(props: ProviderProps) {
     super(props);

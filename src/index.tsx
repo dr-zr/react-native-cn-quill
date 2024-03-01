@@ -1,23 +1,18 @@
-import QuillEditor, { EditorProps } from './editor/quill-editor';
-import { QuillToolbar } from './toolbar/quill-toolbar';
 import type {
-  EditorEventHandler,
-  SelectionChangeData,
+  DimensionsChangeData,
   EditorChangeData,
-  TextChangeData,
+  EditorEventHandler,
   FormatChangeData,
   HtmlChangeData,
-  DimensionsChangeData,
+  SelectionChangeData,
+  TextChangeData,
 } from './constants/editor-event';
+import QuillEditor, { type EditorProps } from './editor/quill-editor';
+import { QuillToolbar } from './toolbar/quill-toolbar';
 export default QuillEditor;
 export { QuillToolbar };
 export type {
-  EditorProps,
-  EditorEventHandler,
-  SelectionChangeData,
-  EditorChangeData,
-  TextChangeData,
-  FormatChangeData,
-  HtmlChangeData,
-  DimensionsChangeData,
+  DimensionsChangeData, EditorChangeData, EditorEventHandler, EditorProps, FormatChangeData,
+  HtmlChangeData, SelectionChangeData, TextChangeData
 };
+
