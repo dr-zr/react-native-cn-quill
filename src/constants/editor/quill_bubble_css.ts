@@ -73,9 +73,23 @@ export const quill_bubble_css = (cdn: boolean) =>
    .ql-editor ul > li {
      list-style-type: none;
    }
-   .ql-editor ul > li::before {
-     content: '\\2022';
-   }
+   .ql-editor ul.list-1 {
+  .ql-editor ul.list-4 {
+  .ql-editor ul.list-7 {
+    list-style-type: disc;
+  }
+
+  .ql-editor ul.list-2 {
+  .ql-editor ul.list-5 {
+  .ql-editor ul.list-8 {
+    list-style-type: circle;
+  }
+
+  .ql-editor ul.list-3 {
+  .ql-editor ul.list-6 {
+  .ql-editor ul.list-9 {
+    list-style-type: square;
+  }
    .ql-editor ul[data-checked=true],
    .ql-editor ul[data-checked=false] {
      pointer-events: none;
