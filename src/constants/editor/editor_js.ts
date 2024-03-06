@@ -172,6 +172,7 @@ export const editor_js = `
     let getLineResult = [null, 0];
     try {
       getLineResult = quill.getLine(index);
+      const [leaf, offset] = getLineResult;
        const getLineJson = JSON.stringify({
       type: 'get-line',
       key: key,
@@ -181,7 +182,6 @@ export const editor_js = `
 
     return;
     } catch { }
-    const [leaf, offset] = getLineResult;
     const getLineData = leaf && leaf.parent && leaf.parent.domNode ? {
       offset,
       text: leaf.text,
