@@ -189,7 +189,7 @@ export const editor_js = `
         tag: leaf.parent.next.domNode.tagName,
         attributes: getAttributes(leaf.parent.next.domNode),
       } : null,
-    } : null;
+    } : {};
     const getLeafJson = JSON.stringify({
       type: 'get-leaf',
       key: key,
