@@ -176,7 +176,7 @@ export const editor_js = `
        const getLineJson = JSON.stringify({
       type: 'get-line',
       key: key,
-      data: {a:1,b:2}
+      data: {offset,a:1,b:2}
     });
     sendMessage(getLineJson);
 
