@@ -176,9 +176,9 @@ export const editor_js = `
       length: leaf.text.length,
       index: quill.getIndex(leaf),
       attributes: getAttributes(leaf.parent.domNode),
-      parent: JSON.stringify(leaf.parent),
-      prev: JSON.stringify(leaf.prev),
-      next: JSON.stringify(leaf.next)
+      parent: 'parent',
+      prev: 'prev',
+      next: 'next'
     } : null;
     const getLeafJson = JSON.stringify({
       type: 'get-leaf',
