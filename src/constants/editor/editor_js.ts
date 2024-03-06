@@ -169,7 +169,11 @@ export const editor_js = `
   }
 
   const getLeaf = function (key, index) {
-    const [leaf, offset] = quill.getLeaf(index);
+    let getLeafResult = [null, 0];
+    try {
+      getLeafResult = quill.getLeaf(index);
+    } catch { }
+    const [leaf, offset] = getLeafResult;
     const getLeafData = leaf && leaf.parent && leaf.parent.domNode ? {
       offset,
       text: leaf.text,
