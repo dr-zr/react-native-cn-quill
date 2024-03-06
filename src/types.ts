@@ -78,6 +78,11 @@ export interface CustomFont {
   css: string;
 }
 
+interface MyNode {
+  tag: string;
+  attributes: Record<string, string>;
+}
+
 export interface GetLeafResponse {
   offset: number;
   text: string;
@@ -85,7 +90,9 @@ export interface GetLeafResponse {
   index: number;
   attributes: Record<string, string>;
   tag: string;
-  sibling: number;
+  parent: MyNode;
+  prev: MyNode;
+  next: MyNode;
 }
 
 export interface QuillConfig {

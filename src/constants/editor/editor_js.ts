@@ -177,7 +177,17 @@ export const editor_js = `
       index: quill.getIndex(leaf),
       attributes: getAttributes(leaf.parent.domNode),
       tag: leaf.parent.domNode.tagName,
-      siblings: leaf.parent.parent?.children?.length ?? -1,
+      parent: leaf.parent.parent ? {
+        tag: leaf.parent.parent.domNode.tagName,
+      },
+      prev: leaf.parent.prev ? {
+        tag: leaf.parent.prev.domNode.tagName,
+        attributes: getAttributes(leaf.parent.prev.domNode),
+      },
+      next: leaf.parent.next ? {
+        tag: leaf.parent.next.domNode.tagName,
+        attributes: getAttributes(leaf.parent.next.domNode),
+      },
     } : null;
     const getLeafJson = JSON.stringify({
       type: 'get-leaf',
