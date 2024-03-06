@@ -84,6 +84,7 @@ export interface GetLeafResponse {
   length: number;
   index: number;
   attributes: Record<string, string>;
+  tag: string;
   sibling: number;
 }
 
