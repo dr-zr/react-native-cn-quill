@@ -78,19 +78,13 @@ export interface CustomFont {
   css: string;
 }
 
-interface Node {
-  tag: string;
-}
 export interface GetLeafResponse {
   offset: number;
   text: string;
   length: number;
   index: number;
   attributes: Record<string, string>;
-  tag: string;
-  parent: Node;
-  next: Node | null;
-  prev: Node | null;
+  sibling: number;
 }
 
 export interface QuillConfig {
