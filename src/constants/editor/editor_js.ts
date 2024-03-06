@@ -179,6 +179,7 @@ export const editor_js = `
       tag: leaf.parent.domNode.tagName,
       parent: leaf.parent.parent ? {
         tag: leaf.parent.parent.domNode.tagName,
+        attributes: getAttributes(leaf.parent.parent.domNode),
       },
       prev: leaf.parent.prev ? {
         tag: leaf.parent.prev.domNode.tagName,
