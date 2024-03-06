@@ -174,7 +174,7 @@ export const editor_js = `
       getLineResult = quill.getLine(index);
     } catch { }
     const [leaf, offset] = getLineResult;
-    const getLineResult = leaf && leaf.parent && leaf.parent.domNode ? {
+    const getLineData = leaf && leaf.parent && leaf.parent.domNode ? {
       offset,
       text: leaf.text,
       length: leaf.text.length,
@@ -200,7 +200,7 @@ export const editor_js = `
       data: getLineData
     });
     sendMessage(getLineJson);
-  }
+}
 
   const getLeaf = function (key, index) {
     let getLeafResult = [null, 0];
