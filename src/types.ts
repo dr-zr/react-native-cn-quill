@@ -85,9 +85,9 @@ export interface GetLeafResponse {
   index: number;
   attributes: Record<string, string>;
   tag: string;
-  parent: GetLeafResponse | null;
-  prev: GetLeafResponse | null;
-  next: GetLeafResponse | null;
+  parent: string;
+  prev: string;
+  next: string;
 }
 
 export interface QuillConfig {
