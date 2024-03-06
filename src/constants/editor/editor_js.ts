@@ -172,20 +172,10 @@ export const editor_js = `
     let getLineResult = [null, 0];
     try {
       getLineResult = quill.getLine(index);
-      const [leaf, offset] = getLineResult;
-       const getLineJson = JSON.stringify({
-      type: 'get-line',
-      key: key,
-      data: {offset,a:1,b:2}
-    });
-    sendMessage(getLineJson);
-
-    return;
     } catch { }
+    const [leaf, offset] = getLineResult;
     const getLineData = leaf && leaf.parent && leaf.parent.domNode ? {
       offset,
-      text: leaf.text,
-      length: leaf.text.length,
       index: quill.getIndex(leaf),
       attributes: getAttributes(leaf.parent.domNode),
       tag: leaf.parent.domNode.tagName,
