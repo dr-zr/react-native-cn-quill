@@ -90,9 +90,9 @@ export interface GetLeafResponse {
   index: number;
   attributes: Record<string, string>;
   tag: string;
-  parent: MyNode;
-  prev: MyNode;
-  next: MyNode;
+  parent: MyNode | null;
+  prev: MyNode | null;
+  next: MyNode | null;
 }
 
 export interface QuillConfig {

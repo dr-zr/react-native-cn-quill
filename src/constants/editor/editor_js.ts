@@ -180,15 +180,15 @@ export const editor_js = `
       parent: leaf.parent.parent ? {
         tag: leaf.parent.parent.domNode.tagName,
         attributes: getAttributes(leaf.parent.parent.domNode),
-      },
+      } : null,
       prev: leaf.parent.prev ? {
         tag: leaf.parent.prev.domNode.tagName,
         attributes: getAttributes(leaf.parent.prev.domNode),
-      },
+      } : null,
       next: leaf.parent.next ? {
         tag: leaf.parent.next.domNode.tagName,
         attributes: getAttributes(leaf.parent.next.domNode),
-      },
+      } : null,
     } : null;
     const getLeafJson = JSON.stringify({
       type: 'get-leaf',
