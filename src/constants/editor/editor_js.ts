@@ -178,7 +178,6 @@ export const editor_js = `
       offset,
       text: leaf.text,
       length: leaf.text.length,
-      index: quill.getIndex(leaf),
       attributes: getAttributes(leaf.parent.domNode),
       tag: leaf.parent.domNode.tagName,
       // parent: leaf.parent.parent ? {
