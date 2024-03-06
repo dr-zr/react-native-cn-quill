@@ -177,19 +177,19 @@ export const editor_js = `
     const getLineData = leaf && leaf.parent && leaf.parent.domNode ? {
       offset,
       index: quill.getIndex(leaf),
-      attributes: getAttributes(leaf.parent.domNode),
-      tag: leaf.parent.domNode.tagName,
-      parent: leaf.parent.parent ? {
-        tag: leaf.parent.parent.domNode.tagName,
-        attributes: getAttributes(leaf.parent.parent.domNode),
+      attributes: getAttributes(leaf.domNode),
+      tag: leaf.domNode.tagName,
+      parent: {
+        tag: leaf.parent.domNode.tagName,
+        attributes: getAttributes(leaf.parent.domNode),
+      },
+      prev: leaf.prev ? {
+        tag: leaf.prev.domNode.tagName,
+        attributes: getAttributes(leaf.prev.domNode),
       } : null,
-      prev: leaf.parent.prev ? {
-        tag: leaf.parent.prev.domNode.tagName,
-        attributes: getAttributes(leaf.parent.prev.domNode),
-      } : null,
-      next: leaf.parent.next ? {
-        tag: leaf.parent.next.domNode.tagName,
-        attributes: getAttributes(leaf.parent.next.domNode),
+      next: leaf.next ? {
+        tag: leaf.next.domNode.tagName,
+        attributes: getAttributes(leaf.next.domNode),
       } : null,
     } : {};
     const getLineJson = JSON.stringify({
