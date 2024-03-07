@@ -1,9 +1,4 @@
-export const quill_js = (cdn: boolean) =>
-  cdn === true
-    ? '<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.core.js"></script>'
-    : `
-    <script>
-    /*! For license information please see quill.core.js.LICENSE.txt */
+/*! For license information please see quill.core.js.LICENSE.txt */
 !(function (t, e) {
   'object' == typeof exports && 'object' == typeof module
     ? (module.exports = e())
@@ -612,7 +607,7 @@ export const quill_js = (cdn: boolean) =>
           function g(t, e, n) {
             if (0 === t.length) {
               const [t] = y(n.pop());
-              return e <= 0 ? '</li></' + t + '>' : '</li></' + t + '>' + g([], e - 1, n);
+              return e <= 0 ? `</li></${t}>` : `</li></${t}>${g([], e - 1, n)}`;
             }
             const [
                 { child: r, offset: i, length: s, indent: o, type: l },
@@ -623,14 +618,15 @@ export const quill_js = (cdn: boolean) =>
               return (
                 n.push(l),
                 o === e + 1
-                  ? '<' + c + '><li' + u + '>' + m(r, i, s) + g(a, o, n)
-                  : '<' + c + '><li>' + g(t, e + 1, n)
+                  ? `<${c}><li${u}>${m(r, i, s)}${g(a, o, n)}`
+                  : `<${c}><li>${g(t, e + 1, n)}`
               );
-              const h = n[n.length - 1];
-              if (o === e && l === h)
-                return '</li><li' + u + '>' + m(r, i, s) + g(a, o, n);
-              const [f] = y(n.pop());
-              return '</li></' + f + '>' + g(t, e - 1, n);
+            const h = n[n.length - 1];
+            if (o === e && l === h)
+              return `</li><li${u}>${m(r, i, s)}${g(a, o, n)}`;
+            const [f] = y(n.pop());
+            return `</li></${f}>${g(t, e - 1, n)}`;
+          }
           function m(t, e, n) {
             let r =
               arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
@@ -665,10 +661,10 @@ export const quill_js = (cdn: boolean) =>
               )
                 return i.join('');
               const { outerHTML: s, innerHTML: o } = t.domNode,
-              [l, a] = s.split('>' + o + '<');
+                [l, a] = s.split(`>${o}<`);
               return '<table' === l
-                ? '<table style="border: 1px solid #000;">' + i.join('') + '<' + a
-                : l + '>' + i.join('') + '<' + a;
+                ? `<table style="border: 1px solid #000;">${i.join('')}<${a}`
+                : `${l}>${i.join('')}<${a}`;
             }
             return t.domNode instanceof Element ? t.domNode.outerHTML : '';
           }
@@ -1107,7 +1103,7 @@ export const quill_js = (cdn: boolean) =>
               return (
                 null == this.imports[t] &&
                   k.error(
-                    'Cannot import ' + t + '. Are you sure it was registered?'
+                    `Cannot import ${t}. Are you sure it was registered?`
                   ),
                 this.imports[t]
               );
@@ -1118,14 +1114,14 @@ export const quill_js = (cdn: boolean) =>
               if ('string' != typeof t) {
                 const n = 'attrName' in t ? t.attrName : t.blotName;
                 'string' == typeof n
-                  ? this.register('formats/' + n, t, e)
+                  ? this.register(`formats/${n}`, t, e)
                   : Object.keys(t).forEach((n) => {
                       this.register(n, t[n], e);
                     });
               } else
                 null == this.imports[t] ||
                   n ||
-                  k.warn('Overwriting ' + t + ' with', e),
+                  k.warn(`Overwriting ${t} with`, e),
                   (this.imports[t] = e),
                   (t.startsWith('blots/') || t.startsWith('formats/')) &&
                     e &&
@@ -1154,9 +1150,13 @@ export const quill_js = (cdn: boolean) =>
                     e
                   );
                   if (n.theme && n.theme !== R.DEFAULTS.theme) {
-                    n.theme = R.import('themes/' + n.theme);
-                    if (null == n.theme)
-                      throw new Error('Invalid theme ' + n.theme + '. Did you register it?');
+                    if (
+                      ((n.theme = R.import(`themes/${n.theme}`)),
+                      null == n.theme)
+                    )
+                      throw new Error(
+                        `Invalid theme ${n.theme}. Did you register it?`
+                      );
                   } else n.theme = j.Z;
                   const s = (0, i.Z)(n.theme.DEFAULTS);
                   [s, n].forEach((t) => {
@@ -1168,11 +1168,11 @@ export const quill_js = (cdn: boolean) =>
                   const o = Object.keys(s.modules)
                     .concat(Object.keys(n.modules))
                     .reduce((t, e) => {
-                      const n = R.import('modules/' + e);
+                      const n = R.import(`modules/${e}`);
                       return (
                         null == n
                           ? k.error(
-                              'Cannot load ' + e + ' module. Are you sure you registered it?'
+                              `Cannot load ${e} module. Are you sure you registered it?`
                             )
                           : (t[e] = n.DEFAULTS || {}),
                         t
@@ -1211,7 +1211,7 @@ export const quill_js = (cdn: boolean) =>
               const o = s.ScrollBlot.blotName,
                 a = this.options.registry.query(o);
               if (!a || !('blotName' in a))
-                throw new Error('Cannot initialize Quill without "' + o + '" blot');
+                throw new Error(`Cannot initialize Quill without "${o}" blot`);
               if (
                 ((this.scroll = new a(this.options.registry, this.root, {
                   emitter: this.emitter,
@@ -1258,7 +1258,7 @@ export const quill_js = (cdn: boolean) =>
                 n)
               ) {
                 const t = this.clipboard.convert({
-                  html: n + "<p><br></p>",
+                  html: `${n}<p><br></p>`,
                   text: '\n',
                 });
                 this.setContents(t);
@@ -2080,7 +2080,7 @@ export const quill_js = (cdn: boolean) =>
               });
             }
             addModule(t) {
-              const e = this.quill.constructor.import('modules/' + t);
+              const e = this.quill.constructor.import(`modules/${t}`);
               return (
                 (this.modules[t] = new e(
                   this.quill,
@@ -2154,7 +2154,7 @@ export const quill_js = (cdn: boolean) =>
                 .slice(t, t + e);
             }
             html(t, e) {
-              return '<pre>\n' + (0, l.b)(this.code(t, e)) + '\n</pre>'
+              return `<pre>\n${(0, l.b)(this.code(t, e))}\n</pre>`;
             }
           }
           class h extends r.ZP {
@@ -2192,10 +2192,10 @@ export const quill_js = (cdn: boolean) =>
               let e = super.value(t);
               return e.startsWith('rgb(')
                 ? ((e = e.replace(/^[^\d]+/, '').replace(/[^\d]+$/, '')),
-                  '#' + e
+                  `#${e
                     .split(',')
-                    .map((t) => '00' + parseInt(t, 10).toString(16).slice(-2))
-                    .join(''))
+                    .map((t) => `00${parseInt(t, 10).toString(16)}`.slice(-2))
+                    .join('')}`)
                 : e;
             }
           }
@@ -2311,9 +2311,9 @@ export const quill_js = (cdn: boolean) =>
                               s = n?.match(x),
                               o = s ? Number(s[1]) : 1,
                               l = new RegExp(
-                                    '@list l' + i + ':level' + o + '\\s*\\{[^\\}]*mso-level-number-format:\\s*([\\w-]+)',
-                                    'i'
-                                  ),
+                                `@list l${i}:level${o}\\s*\\{[^\\}]*mso-level-number-format:\\s*([\\w-]+)`,
+                                'i'
+                              ),
                               a = e.match(l);
                             return {
                               id: i,
@@ -5394,7 +5394,7 @@ export const quill_js = (cdn: boolean) =>
               const n = Object.keys(t)[0];
               if (!n || n !== Object.keys(e)[0])
                 throw new Error(
-                  'embed types not matched: ' + n + ' != ' + Object.keys(e)[0]
+                  `embed types not matched: ${n} != ${Object.keys(e)[0]}`
                 );
               return [n, t[n], e[n]];
             };
@@ -5414,7 +5414,7 @@ export const quill_js = (cdn: boolean) =>
             }
             static getHandler(t) {
               const e = this.handlers[t];
-              if (!e) throw new Error('no handlers for embed type "' + t + '"');
+              if (!e) throw new Error(`no handlers for embed type "${t}"`);
               return e;
             }
             insert(t, e) {
@@ -7703,7 +7703,7 @@ export const quill_js = (cdn: boolean) =>
             }
             create(e, n, r) {
               const i = this.query(n);
-              if (null == i) throw new s('Unable to create ' + n + ' blot');
+              if (null == i) throw new s(`Unable to create ${n} blot`);
               const o = i,
                 l =
                   n instanceof Node || n.nodeType === Node.TEXT_NODE
@@ -7776,7 +7776,7 @@ export const quill_js = (cdn: boolean) =>
           function a(t, e) {
             return (t.getAttribute('class') || '')
               .split(/\s+/)
-              .filter((t) => 0 === t.indexOf(e + "-")
+              .filter((t) => 0 === t.indexOf(`${e}-`));
           }
           class c extends i {
             static keys(t) {
@@ -7787,7 +7787,7 @@ export const quill_js = (cdn: boolean) =>
             add(t, e) {
               return (
                 !!this.canAdd(t, e) &&
-                (this.remove(t), t.classList.add(this.keyName + '-' + e), !0)
+                (this.remove(t), t.classList.add(`${this.keyName}-${e}`), !0)
               );
             }
             remove(t) {
@@ -7981,7 +7981,7 @@ export const quill_js = (cdn: boolean) =>
                   this.parent.insertBefore(n, this.next || void 0),
                 'function' != typeof n.appendChild)
               )
-                throw new s('Cannot wrap ' + t);
+                throw new s(`Cannot wrap ${t}`);
               return n.appendChild(this), n;
             }
           };
@@ -9486,6 +9486,3 @@ export const quill_js = (cdn: boolean) =>
   })();
 });
 //# sourceMappingURL=quill.core.js.map
-
-   </script>
-`;
