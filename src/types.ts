@@ -95,6 +95,16 @@ export interface GetLeafResponse {
   next: MyNode | null;
 }
 
+export interface GetLineResponse {
+  offset: number;
+  index: number;
+  attributes: Record<string, string>;
+  tag: string;
+  parent: MyNode | null;
+  prev: MyNode | null;
+  next: MyNode | null;
+}
+
 export interface QuillConfig {
   id?: string;
   modules?: {
