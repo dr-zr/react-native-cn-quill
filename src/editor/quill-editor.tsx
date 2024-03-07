@@ -27,7 +27,6 @@ import type {
   EditorMessage,
   EditorResponse,
   GetLeafResponse,
-  GetLineResponse,
   QuillConfig,
 } from '../types';
 import { createHtml } from '../utils/editor-utils';
@@ -357,7 +356,7 @@ export default class QuillEditor extends React.Component<
     return this.postAwait({ command: 'getLeaf', index });
   };
 
-  getLine = (index: number): Promise<GetLineResponse | null> => {
+  getLine = (index: number): Promise<GetLeafResponse | null> => {
     return this.postAwait({ command: 'getLine', index });
   };
 
