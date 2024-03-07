@@ -100,6 +100,7 @@ export interface GetLineResponse {
   index: number;
   attributes: Record<string, string>;
   tag: string;
+  text: string | null;
   parent: MyNode | null;
   prev: MyNode | null;
   next: MyNode | null;
