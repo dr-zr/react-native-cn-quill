@@ -204,13 +204,8 @@ export const editor_js = `
   const getSemanticHTML = (index, length) => {
     let getSemanticHTMLData = null;
     try{
-      alert("GETTING SEMANTIC HTML");
-      const msg = "getSemanticHTML exists in quill ? " + (quill.getSemanticHTML ? "YES" : "NO");
-      alert(msg);
       getSemanticHTMLData = quill.getSemanticHTML(index, length);
-      alert("SEMANTIC HTML: " + getSemanticHTMLData);
     } catch (error) {
-      alert("ERROR: " + error);
     }
 
     const getSemanticHTMLJson = JSON.stringify({
