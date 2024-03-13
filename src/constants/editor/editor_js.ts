@@ -201,6 +201,20 @@ export const editor_js = `
     sendMessage(getLineJson);
 }
 
+  const getSemanticHTML = (index, length) => {
+    let getSemanticHTMLData = null;
+    try{
+      getSemanticHTMLData = quill.getSemanticHTML(index, length);
+    } catch {
+    }
+    
+    const getSemanticHTMLJson = JSON.stringify({
+      type: 'get-semantic-html',
+      data: getSemanticHTMLData
+    });
+    sendMessage(getSemanticHTMLJson);
+  }
+
   const getLeaf = function (key, index) {
     let getLeafResult = [null, 0];
     try {
@@ -303,6 +317,9 @@ export const editor_js = `
         break;
       case 'getLine':
         getLine(msg.key, msg.index);
+        break;
+      case 'getSemanticHTML':
+        getSemanticHTML(msg.index, msg.length);
         break;
       case 'setSelection':
         setSelection(msg.index, msg.length, msg.source);

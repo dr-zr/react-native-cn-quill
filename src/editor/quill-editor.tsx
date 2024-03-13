@@ -361,6 +361,10 @@ export default class QuillEditor extends React.Component<
     return this.postAwait({ command: 'getLine', index });
   };
 
+  getSemanticHTML = (index: number, length?: number): Promise<string> => {
+    return this.postAwait({ command: 'getSemanticHTML', index, length });
+  };
+
   formatText = (
     index: number,
     length: number,
