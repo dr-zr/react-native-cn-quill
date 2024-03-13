@@ -232,6 +232,7 @@ export default class QuillEditor extends React.Component<
       case 'get-format':
       case 'get-leaf':
       case 'get-line':
+      case 'get-semantic-html':
       case 'remove-format':
       case 'format-text':
         if (response) {
