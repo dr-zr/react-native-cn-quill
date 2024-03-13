@@ -201,7 +201,7 @@ export const editor_js = `
     sendMessage(getLineJson);
 }
 
-  const getSemanticHTML = (index, length) => {
+  const getSemanticHTML = (key,index, length) => {
     let getSemanticHTMLData = null;
     try{
       getSemanticHTMLData = quill.getSemanticHTML(index, length);
@@ -210,6 +210,7 @@ export const editor_js = `
 
     const getSemanticHTMLJson = JSON.stringify({
       type: 'get-semantic-html',
+      key,
       data: getSemanticHTMLData
     });
     sendMessage(getSemanticHTMLJson);
@@ -319,7 +320,7 @@ export const editor_js = `
         getLine(msg.key, msg.index);
         break;
       case 'getSemanticHTML':
-        getSemanticHTML(msg.index, msg.length);
+        getSemanticHTML(msg.key,msg.index, msg.length);
         break;
       case 'setSelection':
         setSelection(msg.index, msg.length, msg.source);
