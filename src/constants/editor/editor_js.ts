@@ -209,7 +209,8 @@ export const editor_js = `
       alert(msg);
       getSemanticHTMLData = quill.getSemanticHTML(index, length);
       alert("SEMANTIC HTML: " + getSemanticHTMLData);
-    } catch {
+    } catch (error) {
+      alert("ERROR: " + error);
     }
 
     const getSemanticHTMLJson = JSON.stringify({
