@@ -1,6 +1,6 @@
 export const quill_bubble_css = (cdn: boolean) =>
   cdn === true
-    ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.bubble.css">'
+    ? '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.3/dist/quill.bubble.css">'
     : `
     <style>
     /*!
