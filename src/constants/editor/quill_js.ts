@@ -1,6 +1,6 @@
 export const quill_js = (cdn: boolean) =>
   cdn === true
-    ? '<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.3/dist/quill.min.js"></script>'
+    ? '<script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.4/dist/quill.min.js"></script>'
     : `
     <script>
     /*!
