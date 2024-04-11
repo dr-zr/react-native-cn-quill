@@ -1,6 +1,8 @@
+import { cdnUrl } from './config';
+
 export const quill_snow_css = (cdn: boolean) =>
   cdn === true
-    ? '<link href="https://raw.githubusercontent.com/dr-zr/quill-builds/main/quill.snow.css" rel="stylesheet">'
+    ? `<link href="${cdnUrl}/quill.snow.css" rel="stylesheet">`
     : `
     <style>
     /*!

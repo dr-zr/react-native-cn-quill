@@ -1,6 +1,8 @@
+import { cdnUrl } from './config';
+
 export const quill_js = (cdn: boolean) =>
   cdn === true
-    ? `<script src="https://raw.githubusercontent.com/dr-zr/quill-builds/main/quill.js"></script>`
+    ? `<script src="${cdnUrl}/quill.js"></script>`
     : `
     <script>
     /*!

@@ -1,6 +1,8 @@
+import { cdnUrl } from './config';
+
 export const quill_bubble_css = (cdn: boolean) =>
   cdn === true
-    ? '<link rel="stylesheet" href="https://raw.githubusercontent.com/dr-zr/quill-builds/main/quill.bubble.css">'
+    ? `<link rel="stylesheet" href="${cdnUrl}/quill.bubble.css">`
     : `
     <style>
     /*!
