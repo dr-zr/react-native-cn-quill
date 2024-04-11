@@ -1,9 +1,6 @@
-// const cdnUrl = 'https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.js';
-const cdnUrl = 'https://d01ekt-ip-31-223-130-1.tunnelmole.net/dist/quill.js';
-
 export const quill_js = (cdn: boolean) =>
   cdn === true
-    ? `<script src="${cdnUrl}"></script>`
+    ? `<script src="https://raw.githubusercontent.com/dr-zr/quill-builds/main/quill.js"></script>`
     : `
     <script>
     /*!
