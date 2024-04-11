@@ -1,6 +1,6 @@
 export const quill_snow_css = (cdn: boolean) =>
   cdn === true
-    ? '<link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.4/dist/quill.snow.css" rel="stylesheet">'
+    ? '<link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.snow.css" rel="stylesheet">'
     : `
     <style>
     /*!
