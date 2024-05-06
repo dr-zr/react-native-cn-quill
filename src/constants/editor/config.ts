@@ -1,1 +1,1 @@
-export const cdnUrl = 'http://192.168.1.7:9080/dist/';
+export const cdnUrl = 'https://dr-zr.github.io/quill-builds/dev/';
