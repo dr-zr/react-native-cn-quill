@@ -186,7 +186,7 @@ export default class QuillEditor extends React.Component<
     return promise;
   }
 
-  private post = (obj: object) => {
+  post = (obj: object) => {
     const jsonString = JSON.stringify(obj);
     this._webview.current?.postMessage(jsonString);
   };
