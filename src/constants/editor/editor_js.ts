@@ -415,6 +415,22 @@ export const editor_js = `
       sendMessage(getSelectionChange)
   });
 
+  quill.on('composition-start', function() {
+    var getCompositionStart = JSON.stringify({
+      type: 'composition-update',
+      data: { isComposing: true }
+    });
+    sendMessage(getCompositionStart);
+  })
+
+  quill.on('composition-end', function() {
+    var getCompositionEnd = JSON.stringify({
+      type: 'composition-update',
+      data: { isComposing: false }
+    });
+    sendMessage(getCompositionEnd);
+  })
+
   quill.root.addEventListener('blur', function () {
     sendMessage(JSON.stringify({type: 'blur'}));
   });

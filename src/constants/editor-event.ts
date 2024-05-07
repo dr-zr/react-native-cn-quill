@@ -6,7 +6,8 @@ export type EditorEventType =
   | 'html-change'
   | 'dimensions-change'
   | 'blur'
-  | 'focus';
+  | 'focus'
+  | 'composition-update';
 
 export interface SelectionChangeData {
   range: { index: number; length: number } | null;
@@ -39,12 +40,17 @@ export interface DimensionsChangeData {
   height: number;
 }
 
+export interface CompositionUpdateData {
+  isComposing: boolean;
+}
+
 export type EditorChangeHandler = (data: EditorChangeData) => void;
 export type TextChangeHandler = (data: TextChangeData) => void;
 export type SelectionChangeHandler = (data: SelectionChangeData) => void;
 export type FormatChangeHandler = (data: FormatChangeData) => void;
 export type HtmlChangeHandler = (data: HtmlChangeData) => void;
 export type DimensionsChangeHandler = (data: DimensionsChangeData) => void;
+export type CompositionUpdateHandler = (data: CompositionUpdateData) => void;
 
 export type EditorEventHandler =
   | EditorChangeHandler
@@ -52,6 +58,7 @@ export type EditorEventHandler =
   | SelectionChangeHandler
   | FormatChangeHandler
   | HtmlChangeHandler
-  | DimensionsChangeHandler;
+  | DimensionsChangeHandler
+  | CompositionUpdateHandler;
 
 export type Range = { index: number; length: number };

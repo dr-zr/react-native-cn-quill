@@ -56,6 +56,7 @@ export interface EditorProps {
   onHtmlChange?: (data: HtmlChangeData) => void;
   onEditorChange?: (data: EditorChangeData) => void;
   onDimensionsChange?: (data: DimensionsChangeData) => void;
+  onCompositionUpdate?: (data: DimensionsChangeData) => void;
   webview?: WebViewProps;
   onBlur?: () => void;
   onFocus?: () => void;
@@ -78,7 +79,7 @@ export default class QuillEditor extends React.Component<
     super(props);
     this._webview = React.createRef();
     this.state = {
-      webviewContent: this.getInitalHtml(),
+      webviewContent: this.getInitialHtml(),
     };
 
     this._handlers = [];
@@ -91,6 +92,7 @@ export default class QuillEditor extends React.Component<
       onDimensionsChange,
       onBlur,
       onFocus,
+      onCompositionUpdate,
     } = this.props;
     if (onSelectionChange) {
       this.on('selection-change', onSelectionChange);
@@ -113,9 +115,13 @@ export default class QuillEditor extends React.Component<
     if (onFocus) {
       this.on('focus', onFocus);
     }
+
+    if (onCompositionUpdate) {
+      this.on('composition-update', onCompositionUpdate);
+    }
   }
 
-  private getInitalHtml = (): string => {
+  private getInitialHtml = (): string => {
     const {
       initialHtml = '',
       import3rdParties = 'local',
@@ -216,6 +222,7 @@ export default class QuillEditor extends React.Component<
       case 'editor-change':
       case 'blur':
       case 'focus':
+      case 'composition-update':
         this._handlers
           .filter((x) => x.event === message.type)
           .forEach((item) => item.handler(message.data));
