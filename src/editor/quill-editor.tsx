@@ -13,6 +13,7 @@ import {
   type WebViewProps,
 } from 'react-native-webview';
 import type {
+  CompositionUpdateData,
   DimensionsChangeData,
   EditorChangeData,
   EditorEventHandler,
@@ -56,7 +57,7 @@ export interface EditorProps {
   onHtmlChange?: (data: HtmlChangeData) => void;
   onEditorChange?: (data: EditorChangeData) => void;
   onDimensionsChange?: (data: DimensionsChangeData) => void;
-  onCompositionUpdate?: (data: DimensionsChangeData) => void;
+  onCompositionUpdate?: (data: CompositionUpdateData) => void;
   webview?: WebViewProps;
   onBlur?: () => void;
   onFocus?: () => void;
