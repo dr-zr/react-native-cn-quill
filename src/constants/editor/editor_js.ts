@@ -37,7 +37,7 @@ export const editor_js = `
   var formatSelection = function (name, value) {
     var range = quill.getSelection();
     if (!range) quill.focus();
-    alert(name + " " + value + " " + Quill.sources.USER);
+    alert(name + " " + value+ " " + Quill.sources.USER+ " " + JSON.stringify(range));
     quill.format(name, value, Quill.sources.USER);
     getSelectedFormats();
   }
