@@ -12,7 +12,12 @@ import { QuillToolbar } from './toolbar/quill-toolbar';
 export default QuillEditor;
 export { QuillToolbar };
 export type {
-  DimensionsChangeData, EditorChangeData, EditorEventHandler, EditorProps, FormatChangeData,
-  HtmlChangeData, SelectionChangeData, TextChangeData
+  DimensionsChangeData,
+  EditorChangeData,
+  EditorEventHandler,
+  EditorProps,
+  FormatChangeData,
+  HtmlChangeData,
+  SelectionChangeData,
+  TextChangeData,
 };
-

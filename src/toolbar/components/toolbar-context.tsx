@@ -52,7 +52,10 @@ interface ProviderState {
   name: string;
 }
 
-export class ToolbarProvider extends Component<PropsWithChildren<ProviderProps>, ProviderState> {
+export class ToolbarProvider extends Component<
+  PropsWithChildren<ProviderProps>,
+  ProviderState
+> {
   animatedValue: Animated.Value;
   constructor(props: ProviderProps) {
     super(props);

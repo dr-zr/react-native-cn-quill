@@ -1,11 +1,11 @@
 import { formats, formatType, formatValueType } from '../constants/formats';
+import { icons as defaultIcons } from '../constants/icons';
 import type {
   ColorListData,
   formatDefault,
   TextListData,
   ToggleData,
 } from '../types';
-import { icons as defaultIcons } from '../constants/icons';
 import { getFontName } from './editor-utils';
 
 export const getToolbarData = (
@@ -130,8 +130,8 @@ const createToolSet = (
                       ? x.value === false
                         ? icons[key]['']
                         : typeof x.value === 'string'
-                        ? icons[key][x.value]
-                        : undefined
+                          ? icons[key][x.value]
+                          : undefined
                       : undefined;
 
                   return {
@@ -159,7 +159,7 @@ const createToolSet = (
                       valueOff: false,
                       valueOn: x.value,
                       type: formatType.color,
-                    } as ToggleData)
+                    }) as ToggleData
                 ),
                 type: formatType.color,
               } as ColorListData);

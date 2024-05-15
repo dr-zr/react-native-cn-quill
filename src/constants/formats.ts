@@ -31,7 +31,7 @@ export const formats: Array<format> = [
             name: c,
             value: c,
             type: formatValueType.color,
-          } as formatDefault)
+          }) as formatDefault
       ),
     ],
   },
@@ -51,7 +51,7 @@ export const formats: Array<format> = [
             name: c,
             value: c,
             type: formatValueType.color,
-          } as formatDefault)
+          }) as formatDefault
       ),
     ],
   },
