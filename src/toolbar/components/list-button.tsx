@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import type { ToggleData, ToolbarTheme } from '../../types';
 import { useToolbar } from './toolbar-context';
 
@@ -8,16 +7,9 @@ interface Props {
   items: Array<ToggleData>;
 }
 
-export const ListButton: React.FC<Props> = ({ name, items }) => {
-  const {
-    theme,
-    show,
-    hide,
-    open,
-    selectionName,
-    getSelected,
-    styles,
-  } = useToolbar();
+export function ListButton({ name, items }: Props) {
+  const { theme, show, hide, open, selectionName, getSelected, styles } =
+    useToolbar();
   const defaultStyles = makeStyles(theme);
   const toolStyle = styles?.toolbar?.toolset?.listButton?.tool
     ? styles.toolbar?.toolset?.listButton.tool(defaultStyles.tool)
@@ -54,7 +46,7 @@ export const ListButton: React.FC<Props> = ({ name, items }) => {
       </View>
     </TouchableOpacity>
   );
-};
+}
 
 const makeStyles = (theme: ToolbarTheme) =>
   StyleSheet.create({

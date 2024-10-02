@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Image,
   StyleSheet,
@@ -15,16 +14,9 @@ interface Props {
   items: Array<ToggleData>;
 }
 
-export const ColorListButton: React.FC<Props> = ({ name, items, source }) => {
-  const {
-    theme,
-    show,
-    hide,
-    open,
-    selectionName,
-    getSelected,
-    styles,
-  } = useToolbar();
+export function ColorListButton({ name, items, source }: Props) {
+  const { theme, show, hide, open, selectionName, getSelected, styles } =
+    useToolbar();
   const defaultStyles = makeStyles(theme);
   const toolStyle = styles?.toolbar?.toolset?.colorListButton?.tool
     ? styles.toolbar?.toolset?.colorListButton.tool(defaultStyles.tool)
@@ -65,7 +57,7 @@ export const ColorListButton: React.FC<Props> = ({ name, items, source }) => {
       </View>
     </TouchableOpacity>
   );
-};
+}
 
 const makeStyles = (theme: ToolbarTheme) =>
   StyleSheet.create({

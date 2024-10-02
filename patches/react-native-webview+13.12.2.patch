@@ -1,0 +1,36 @@
+diff --git a/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/RNCWebView.java b/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/RNCWebView.java
+index 6664b6f..ef00ee2 100644
+--- a/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/RNCWebView.java
++++ b/node_modules/react-native-webview/android/src/main/java/com/reactnativecommunity/webview/RNCWebView.java
+@@ -102,6 +102,31 @@ public class RNCWebView extends WebView implements LifecycleEventListener {
+         this.nestedScrollEnabled = nestedScrollEnabled;
+     }
+ 
++    @Override
++    public InputConnection onCreateInputConnection(EditorInfo editorInfo) {
++        InputConnection inputConnection = super.onCreateInputConnection(editorInfo);
++        if (inputConnection == null) {
++            return null;
++        }
++
++
++        EditorInfoCompat.setContentMimeTypes(editorInfo, new String[]{
++                "image/bmp",
++                "image/png",
++                "image/jpeg",
++                "image/jpg",
++                "image/heic",
++                "image/heif",
++                "image/gif"
++        });
++
++
++        Log.i("RNCWebView::onCreateInputConnection", "here");
++
++
++        return InputConnectionCompat.createWrapper(this, inputConnection, editorInfo);
++    }
++
+     @Override
+     public void onHostResume() {
+         // do nothing
