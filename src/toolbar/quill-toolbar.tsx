@@ -30,7 +30,7 @@ const WIDTH = Dimensions.get('window').width;
 interface QuillToolbarProps {
   options: Array<Array<string | object> | string | object> | 'full' | 'basic';
   styles?: CustomStyles;
-  editor: React.RefObject<QuillEditor>;
+  editor: React.RefObject<QuillEditor | null>;
   theme: ToolbarTheme | 'dark' | 'light';
   separator?: boolean;
   custom?: ToolbarCustom;

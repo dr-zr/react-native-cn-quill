@@ -34,6 +34,8 @@ import type {
 import { createHtml } from '../utils/editor-utils';
 import { Loading } from './loading';
 
+const dataDetectorTypes = ['none'] satisfies WebViewProps['dataDetectorTypes'];
+
 export interface EditorState {
   webviewContent: string | null;
   height?: number;
@@ -426,7 +428,7 @@ export default class QuillEditor extends React.Component<
       domStorageEnabled={false}
       automaticallyAdjustContentInsets={true}
       bounces={false}
-      dataDetectorTypes="none"
+      dataDetectorTypes={dataDetectorTypes}
       {...props}
       javaScriptEnabled={true}
       source={{ html: content }}
